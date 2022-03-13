@@ -4,6 +4,7 @@ import com.devinhouse.devagro.models.Company;
 import com.devinhouse.devagro.repositories.CompanyRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyService {
@@ -32,6 +33,10 @@ public class CompanyService {
 
     public void delete(Long id){
         repository.deleteById(id);
+    }
+
+    public Optional<Company> findById(Long idCompany){
+        return repository.findById(idCompany);
     }
 
 }

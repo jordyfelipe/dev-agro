@@ -35,8 +35,8 @@ public class CompanyService {
         repository.deleteById(id);
     }
 
-    public Optional<Company> findById(Long idCompany){
-        return repository.findById(idCompany);
+    public Optional<Company> findById(Long companyId){
+        return repository.findById(companyId);
     }
 
 }

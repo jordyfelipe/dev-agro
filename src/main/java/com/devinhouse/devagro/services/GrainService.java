@@ -2,9 +2,7 @@ package com.devinhouse.devagro.services;
 
 import com.devinhouse.devagro.dto.GrainDto;
 import com.devinhouse.devagro.models.Company;
-import com.devinhouse.devagro.models.Farm;
 import com.devinhouse.devagro.models.Grain;
-import com.devinhouse.devagro.repositories.CompanyRepository;
 import com.devinhouse.devagro.repositories.GrainRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -14,11 +12,11 @@ import java.util.Optional;
 public class GrainService {
 
     private final GrainRepository grainRepository;
-    private final CompanyRepository companyRepository;
+    private final CompanyService companyService;
 
-    public GrainService(GrainRepository repository, CompanyRepository companyRepository) {
+    public GrainService(GrainRepository repository, CompanyService companyService) {
         this.grainRepository = repository;
-        this.companyRepository = companyRepository;
+        this.companyService = companyService;
     }
 
     public List<Grain> findAll(){
@@ -44,7 +42,7 @@ public class GrainService {
     }
 
     public void addCompanyById(Grain grain, Long companyId){
-        Optional<Company> company = companyRepository.findById(companyId);
+        Optional<Company> company = companyService.findById(companyId);
         if(company.isPresent())
             grain.setCompany(company.get());
         else

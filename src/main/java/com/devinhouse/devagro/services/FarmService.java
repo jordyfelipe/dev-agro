@@ -63,4 +63,12 @@ public class FarmService {
             System.out.println("Company not found!");
     }
 
+    public List<Farm> findFarmsByCompanyId(Long companyId){
+        return farmRepository.findFarmsByCompanyId(companyId);
+    }
+
+    public Integer countFarmsByCompanyId(Long companyId){
+        return farmRepository.countFarmsByCompanyId(companyId);
+    }
+
 }

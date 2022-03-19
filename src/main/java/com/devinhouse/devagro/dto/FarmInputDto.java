@@ -1,27 +1,27 @@
 package com.devinhouse.devagro.dto;
 
-import com.devinhouse.devagro.models.Farm;
 import lombok.Getter;
 import lombok.Setter;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Getter
 @Setter
-public class FarmDto {
+public class FarmInputDto {
 
     @NotBlank
     private String name;
     @NotBlank
     private String address;
-    @NotBlank
+    @NotNull
     private Long companyId;
-    @NotBlank
+    @NotNull
     private Long grainId;
+    @NotNull
+    private LocalDate lastHarvest;
+    @NotNull
+    private Double stock;
 
-    public Farm convert(){
-        Farm farm = new Farm();
-        farm.setName(name);
-        farm.setAddress(address);
-        return farm;
-    }
 }

@@ -1,6 +1,6 @@
 package com.devinhouse.devagro.controllers;
 
-import com.devinhouse.devagro.dto.GrainDto;
+import com.devinhouse.devagro.dto.GrainInputDto;
 import com.devinhouse.devagro.models.Grain;
 import com.devinhouse.devagro.services.GrainService;
 import org.springframework.web.bind.annotation.*;
@@ -23,19 +23,24 @@ public class GrainController {
     }
 
     @PostMapping
-    public Grain insert(@RequestBody GrainDto grainDto){
-        return service.insert(grainDto);
+    public Grain insert(@RequestBody GrainInputDto grainInputDto){
+        return service.insert(grainInputDto);
     }
 
     @PutMapping("/{id}")
     public Grain update(
             @PathVariable Long id,
-            @RequestBody GrainDto grainDto){
-        return service.update(id, grainDto);
+            @RequestBody GrainInputDto grainInputDto){
+        return service.update(id, grainInputDto);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         service.delete(id);
+    }
+
+    @GetMapping("/quantity-by-company")
+    public Integer countFarmsByCompanyId(@RequestParam(value = "companyId") Long companyId){
+        return service.countGrainsByCompanyId(companyId);
     }
 }

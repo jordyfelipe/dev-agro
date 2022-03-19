@@ -1,6 +1,7 @@
 package com.devinhouse.devagro.services;
 
-import com.devinhouse.devagro.dto.GrainDto;
+import com.devinhouse.devagro.dto.GrainInputDto;
+import com.devinhouse.devagro.mappers.GrainMapper;
 import com.devinhouse.devagro.models.Company;
 import com.devinhouse.devagro.models.Grain;
 import com.devinhouse.devagro.repositories.GrainRepository;
@@ -23,17 +24,17 @@ public class GrainService {
         return grainRepository.findAll();
     }
 
-    public Grain insert(GrainDto grainDto){
-        Grain grain = grainDto.convert();
-        addCompanyById(grain, grainDto.getCompanyId());
+    public Grain insert(GrainInputDto grainInputDto){
+        Grain grain = GrainMapper.mapGrain(grainInputDto);
+        addCompanyById(grain, grainInputDto.getCompanyId());
         return grainRepository.save(grain);
     }
 
-    public Grain update(Long id, GrainDto grainDto){
+    public Grain update(Long id, GrainInputDto grainInputDto){
         Grain updatedGrain = grainRepository.findById(id).get();
-        updatedGrain.setName(grainDto.getName());
-        updatedGrain.setAverageHarvestTime(grainDto.getAverageHarvestTime());
-        addCompanyById(updatedGrain,grainDto.getCompanyId());
+        updatedGrain.setName(grainInputDto.getName());
+        updatedGrain.setAverageHarvestTime(grainInputDto.getAverageHarvestTime());
+        addCompanyById(updatedGrain, grainInputDto.getCompanyId());
         return grainRepository.save(updatedGrain);
     }
 
@@ -51,5 +52,17 @@ public class GrainService {
 
     public Optional<Grain> findById(Long grainId) {
         return grainRepository.findById(grainId);
+    }
+
+    public Integer countGrainsByCompanyId(Long companyId){
+        return grainRepository.countFarmsByCompanyId(companyId);
+    }
+
+    public List<Grain> findGrainsByCompanyId(Long companyId){
+         return grainRepository.findGrainsByCompanyId(companyId);
+    }
+
+    public String grainNameById(Long grainId){
+        return grainRepository.grainNameById(grainId);
     }
 }

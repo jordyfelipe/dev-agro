@@ -3,6 +3,7 @@ package com.devinhouse.devagro.models;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @Entity
-@Table(name="tb_employee")
+@Table(name = "tb_employee")
 public class Employee {
 
     @Id

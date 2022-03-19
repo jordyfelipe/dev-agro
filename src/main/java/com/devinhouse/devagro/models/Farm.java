@@ -3,6 +3,7 @@ package com.devinhouse.devagro.models;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 @ToString
 @Entity
-@Table(name="tb_farm")
+@Table(name = "tb_farm")
 public class Farm {
 
     @Id
@@ -28,7 +29,8 @@ public class Farm {
     @JoinColumn(name = "grain_id")
     private Grain grain;
 
-    @Column(name="last_harvest")
+    @Column(name = "last_harvest")
     private LocalDate lastHarvest;
 
+    private Double stock = 0.0;
 }

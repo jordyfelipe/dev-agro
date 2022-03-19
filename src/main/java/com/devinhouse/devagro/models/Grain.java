@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Entity
-@Table(name="tb_grain")
+@Table(name = "tb_grain")
 public class Grain {
 
     @Id

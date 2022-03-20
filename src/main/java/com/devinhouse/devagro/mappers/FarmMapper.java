@@ -2,20 +2,14 @@ package com.devinhouse.devagro.mappers;
 
 import com.devinhouse.devagro.dto.FarmInputDto;
 import com.devinhouse.devagro.dto.FarmNextHarvestOutputDto;
-import com.devinhouse.devagro.dto.GrainStockOutputDto;
 import com.devinhouse.devagro.models.Farm;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FarmMapper {
 
     public static FarmNextHarvestOutputDto mapFarmNextHarvestDto(Farm farm) {
         FarmNextHarvestOutputDto farmNextHarvestOutputDto = new FarmNextHarvestOutputDto();
+        farmNextHarvestOutputDto.setId(farm.getId());
         farmNextHarvestOutputDto.setName(farm.getName());
-        farmNextHarvestOutputDto.setLastHarvest(farm.getLastHarvest());
         return farmNextHarvestOutputDto;
     }
 

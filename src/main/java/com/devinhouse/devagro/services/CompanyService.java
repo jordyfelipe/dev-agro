@@ -2,10 +2,10 @@ package com.devinhouse.devagro.services;
 
 import com.devinhouse.devagro.models.Company;
 import com.devinhouse.devagro.repositories.CompanyRepository;
+import com.devinhouse.devagro.services.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CompanyService {
@@ -25,7 +25,8 @@ public class CompanyService {
     }
 
     public Company update(Long id, Company company) {
-        Company updatedCompany = repository.findById(id).get();
+        Company updatedCompany = repository.findById(id) //
+                .orElseThrow(() -> new EntityNotFoundException("Entidade não encontrada"));
         updatedCompany.setName(company.getName());
         updatedCompany.setCnpj(company.getCnpj());
         updatedCompany.setAddress(company.getAddress());
@@ -33,11 +34,14 @@ public class CompanyService {
     }
 
     public void delete(Long id) {
+        repository.findById(id) //
+                .orElseThrow(() -> new EntityNotFoundException("Entidade não encontrada"));
         repository.deleteById(id);
     }
 
-    public Optional<Company> findById(Long companyId) {
-        return repository.findById(companyId);
+    public Company findById(Long companyId) {
+        return repository.findById(companyId) //
+                .orElseThrow(() -> new EntityNotFoundException("Entidade não encontrada"));
     }
 
 }

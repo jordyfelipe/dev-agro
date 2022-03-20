@@ -5,10 +5,10 @@ import com.devinhouse.devagro.mappers.EmployeeMapper;
 import com.devinhouse.devagro.models.Company;
 import com.devinhouse.devagro.models.Employee;
 import com.devinhouse.devagro.repositories.EmployeeRepository;
+import com.devinhouse.devagro.services.exceptions.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -33,7 +33,9 @@ public class EmployeeService {
     }
 
     public Employee update(Long id, EmployeeInputDto employeeInputDto) {
-        Employee updatedEmployee = employeeRepository.findById(id).get();
+        Employee updatedEmployee = employeeRepository.findById(id) //
+                .orElseThrow(() -> new EntityNotFoundException("Entidade não encontrada"));
+        ;
         updatedEmployee.setName(employeeInputDto.getName());
         updatedEmployee.setLastName(employeeInputDto.getLastName());
         updatedEmployee.setCpf(employeeInputDto.getCpf());
@@ -50,19 +52,37 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
 
+    /**
+     * Localiza uma empresa pelo Id e vincula a um funcionário.
+     *
+     * @param employee  Instância de um funcionário.
+     * @param companyId Id da empresa.
+     */
     public void addCompanyById(Employee employee, Long companyId) {
-        Optional<Company> company = companyService.findById(companyId);
-        if (company.isPresent())
-            employee.setCompany(company.get());
-        else
-            System.out.println("Company not found!");
+        Company company = companyService.findById(companyId);
+        employee.setCompany(company);
     }
 
+    /**
+     * Retorna a quantidade de funcionários de uma empresa.
+     *
+     * @param companyId Id da empresa.
+     * @return Quantidade de funcionários de uma empresa.
+     */
     public Integer countEmployeesByCompanyId(Long companyId) {
-        return employeeRepository.counEmployeesByCompanyId(companyId);
+        companyService.findById(companyId);
+        employeeRepository.countEmployeesByCompanyId(companyId);
+        return employeeRepository.countEmployeesByCompanyId(companyId);
     }
 
+    /**
+     * Retorna uma lista de funcionários de uma empresa.
+     *
+     * @param companyId ID da empresa.
+     * @return Lista de funcionários de uma empresa.
+     */
     public List<Employee> findEmployeesByCompanyId(Long companyId) {
+        companyService.findById(companyId);
         return employeeRepository.findEmployeesByCompanyId(companyId);
     }
 }

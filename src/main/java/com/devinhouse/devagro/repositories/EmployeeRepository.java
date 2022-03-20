@@ -1,7 +1,6 @@
 package com.devinhouse.devagro.repositories;
 
 import com.devinhouse.devagro.models.Employee;
-import com.devinhouse.devagro.models.Farm;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -16,5 +15,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     List<Employee> findEmployeesByCompanyId(@Param("companyId") Long companyId);
 
     @Query(value = "SELECT COUNT(tb_employee.id) AS count FROM tb_employee WHERE company_id = :companyId", nativeQuery = true)
-    Integer counEmployeesByCompanyId(@Param("companyId") Long companyId);
+    Integer countEmployeesByCompanyId(@Param("companyId") Long companyId);
 }

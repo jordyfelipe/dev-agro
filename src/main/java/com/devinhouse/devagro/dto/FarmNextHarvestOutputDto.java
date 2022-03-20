@@ -12,10 +12,10 @@ import java.time.LocalDate;
 public class FarmNextHarvestOutputDto {
 
     @NotBlank
+    private Long id;
+    @NotBlank
     private String name;
     @NotNull
     private LocalDate nextHarvest;
-    @NotNull
-    private LocalDate lastHarvest;
 
 }

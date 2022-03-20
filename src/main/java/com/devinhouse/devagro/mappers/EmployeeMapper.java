@@ -10,7 +10,7 @@ public class EmployeeMapper {
         employee.setName(employeeInputDto.getName());
         employee.setLastName(employeeInputDto.getLastName());
         employee.setCpf(employeeInputDto.getCpf());
-        employee.setAddress(employee.getAddress());
+        employee.setAddress(employeeInputDto.getAddress());
         employee.setTelephoneNumber(employeeInputDto.getTelephoneNumber());
         employee.setGender(employeeInputDto.getGender());
         employee.setBirthDate(employeeInputDto.getBirthDate());

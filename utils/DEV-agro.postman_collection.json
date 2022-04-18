@@ -1,0 +1,646 @@
+{
+	"info": {
+		"_postman_id": "df7dc630-5631-443d-a565-4813d806daaa",
+		"name": "DEV-agro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DEV-agro",
+			"item": [
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "All companies",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/company/list",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"company",
+										"list"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New company",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"JFS Agrícola Ltda\",\r\n    \"cnpj\":\"70.580.090/0001-77\",\r\n    \"address\":\"Rua Don Pedro, 28 - Blumenau/SC - Brasil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/company",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"company"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update company",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"JFS Agrícola Ltda\",\r\n    \"cnpj\":\"90.752.315/0001-12\",\r\n    \"address\":\"Rua Santos, 73 - Centro - Blumenau - SC, Brasil\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/company/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"company",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete company",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/company/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"company",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Grain",
+					"item": [
+						{
+							"name": "All grains",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/grain/list",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"grain",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New grain",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Café\",\r\n    \"averageHarvestTime\": 10,\r\n    \"companyId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/grain",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"grain"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update grain",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Arroz\",\r\n    \"averageHarvestTime\": 10,\r\n    \"companyId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/grain/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"grain",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete grain",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/grain/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"grain",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Quantity by company",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/grain/quantity-by-company?companyId=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"grain",
+										"quantity-by-company"
+									],
+									"query": [
+										{
+											"key": "companyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All grains by company",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/grain/grains-by-company?companyId=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"grain",
+										"grains-by-company"
+									],
+									"query": [
+										{
+											"key": "companyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Farm",
+					"item": [
+						{
+							"name": "All farms",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/farm/list",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All farms by company",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/farm/farms-by-company?companyId=2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"farms-by-company"
+									],
+									"query": [
+										{
+											"key": "companyId",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Quantity by company",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/farm/quantity-by-company?companyId=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"quantity-by-company"
+									],
+									"query": [
+										{
+											"key": "companyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Farm next harvest",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/farm/list-farm-next-harvest?companyId=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"list-farm-next-harvest"
+									],
+									"query": [
+										{
+											"key": "companyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Grain stock by company",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/farm/list-grain-stock-by-company?companyId=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"list-grain-stock-by-company"
+									],
+									"query": [
+										{
+											"key": "companyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New farm",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Fazenda 1\",\r\n    \"address\":\"Rua Petrópolis, 77 - Blumenau/SC\",\r\n    \"companyId\":\"1\",\r\n    \"grainId\":\"1\",\r\n    \"lastHarvest\":\"2022-03-20\",\r\n    \"stock\": 40000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/farm",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Draw grain stock",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/farm/draw/1?value=1000",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"draw",
+										"1"
+									],
+									"query": [
+										{
+											"key": "value",
+											"value": "1000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register harvest",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/farm/harvest/1?value=2000",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"harvest",
+										"1"
+									],
+									"query": [
+										{
+											"key": "value",
+											"value": "2000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update farm",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Fazenda 1\",\r\n    \"address\":\"Rua Petrópolis, 77 - Blumenau/SC\",\r\n    \"companyId\":\"2\",\r\n    \"grainId\":\"2\",\r\n    \"lastHarvest\":\"2022-03-20\",\r\n    \"stock\": 10000    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/farm/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete farm",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/farm/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"farm",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "All employees",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/employee/list",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"employee",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Quantity by company",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/employee/quantity-by-company?companyId=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"employee",
+										"quantity-by-company"
+									],
+									"query": [
+										{
+											"key": "companyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All employees by company",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/employee/employees-by-company?companyId=1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"employee",
+										"employees-by-company"
+									],
+									"query": [
+										{
+											"key": "companyId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New employee",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"name\":\"Marcos\",\r\n   \"lastName\":\"Souza\",\r\n   \"cpf\":\"077.208.075-26\",\r\n   \"address\":\"Rua Alameda Castelo Branco, 23\",\r\n   \"telephoneNumber\":\"(47)989106866\",\r\n   \"gender\":\"Masculino\",\r\n   \"birthDate\":\"2000-09-13\",\r\n   \"hiringDate\":\"2022-03-20\",\r\n   \"companyId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/employee",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"employee"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update employee",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"name\":\"Marcos\",\r\n   \"lastName\":\"Souza\",\r\n   \"cpf\":\"077.208.075-26\",\r\n   \"address\":\"Rua Alameda Castelo Branco, 23\",\r\n   \"telephoneNumber\":\"(47)989106866\",\r\n   \"gender\":\"Masculino\",\r\n   \"birthDate\":\"2000-09-13\",\r\n   \"hiringDate\":\"2022-03-20\",\r\n   \"companyId\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/employee/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"employee",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete employee",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/employee/3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"employee",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
